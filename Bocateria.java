@@ -100,4 +100,21 @@ public class Bocateria
             }
             return NumeroClienteMasBocadillos;
         }
+    
+     /**
+     * este metodo atiende al cliente que ocupa la primera posicion de la cola no evuelve nada 
+     */
+    public void despacharClienteActual()
+    {
+        if(primeraPersonaEnLaCola == null)
+        {
+            System.out.println("lo siento,no puedes atender a ningun cliente, ya que la cola esta vacia");
+        }
+        else
+        {
+            facturacionActual = primeraPersonaEnLaCola.getNumeroDeBocadillos() * PRECIO_BOCADILLO;
+            clientesDespachados.put(primeraPersonaEnLaCola.getNumeroDeCliente(), primeraPersonaEnLaCola);
+            primeraPersonaEnLaCola = primeraPersonaEnLaCola.getSiguienteEnLaCola();       
+        }
+    }
 }
