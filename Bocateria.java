@@ -49,17 +49,55 @@ public class Bocateria
         else if (primeraPersonaEnLaCola.getSiguienteEnLaCola() == null)
         {
             System.out.println("cliente: " + primeraPersonaEnLaCola.getNumeroDeCliente() + " ( " + 
-                               primeraPersonaEnLaCola.getNumeroDeBocadillos() * PRECIO_BOCADILLO + " )");
+                primeraPersonaEnLaCola.getNumeroDeBocadillos() * PRECIO_BOCADILLO + " )");
         }
         else
         {
             System.out.println("cliente: " + primeraPersonaEnLaCola.getNumeroDeCliente() + " ( " + 
-                               primeraPersonaEnLaCola.getNumeroDeBocadillos() * PRECIO_BOCADILLO + " )");
-            while(primeraPersonaEnLaCola.getSiguienteEnLaCola() != null)
+                primeraPersonaEnLaCola.getNumeroDeBocadillos() * PRECIO_BOCADILLO + " )");
+            
+            
+            
+            while(primeraPersonaEnLaCola.getSiguienteEnLaCola()!= null)
             {
                 System.out.println("cliente: " + primeraPersonaEnLaCola.getSiguienteEnLaCola().getNumeroDeCliente() + " ( " + 
-                                    primeraPersonaEnLaCola.getSiguienteEnLaCola().getNumeroDeBocadillos() * PRECIO_BOCADILLO + " )");
+                    primeraPersonaEnLaCola.getSiguienteEnLaCola().getNumeroDeBocadillos() * PRECIO_BOCADILLO + " )");
+                System.out.println("cliente: " + primeraPersonaEnLaCola.getSiguienteEnLaCola().getSiguienteEnLaCola().getNumeroDeCliente() + " ( " + 
+                    primeraPersonaEnLaCola.getSiguienteEnLaCola().getSiguienteEnLaCola().getNumeroDeBocadillos() * PRECIO_BOCADILLO + " )");
             }
         }
+        
     }
+    
+    /**
+         * este metodo devuelve el indice de la persona que mas bocadillos haya comprado
+         * @ parant int
+         */
+        public int getPosicionPrimerClienteConMasBocadillos()
+        {
+            int NumeroClienteMasBocadillos = 0;
+            if(primeraPersonaEnLaCola == null)
+            {
+                 NumeroClienteMasBocadillos = -1;
+            }
+            else if (primeraPersonaEnLaCola.getSiguienteEnLaCola() == null)
+            {
+                NumeroClienteMasBocadillos = primeraPersonaEnLaCola.getNumeroDeCliente();
+            }
+            else
+            {
+                while(primeraPersonaEnLaCola.getSiguienteEnLaCola()!= null)
+                {
+                    if(primeraPersonaEnLaCola.getNumeroDeBocadillos() > primeraPersonaEnLaCola.getSiguienteEnLaCola().getNumeroDeBocadillos())
+                    {
+                        NumeroClienteMasBocadillos = primeraPersonaEnLaCola.getNumeroDeCliente();
+                    }
+                    else
+                    {
+                        NumeroClienteMasBocadillos = primeraPersonaEnLaCola.getSiguienteEnLaCola().getNumeroDeBocadillos();
+                    }
+                }
+            }
+            return NumeroClienteMasBocadillos;
+        }
 }
