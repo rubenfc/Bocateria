@@ -18,7 +18,7 @@ public class Bocateria
     {
         facturacionActual = 0;
     }
-    
+
     /**
      * almacena un nuevo cliente a la cola
      * @param int que simboliza el numero de bocadillos que quiere el cliente
@@ -34,6 +34,32 @@ public class Bocateria
         {
             Cliente cliente = new Cliente(numeroDeBocadillos);
             primeraPersonaEnLaCola.setSiguienteCliente(cliente);
+        }
+    }
+
+    /**
+     * este metodo imprime por pantalla los datos de los clientes en la cola
+     */
+    public void visualizaDatosClientesEnCola()
+    {
+        if(primeraPersonaEnLaCola == null)
+        {
+            System.out.println("lo sentimos aun no ha llegado ningun cliente");
+        }
+        else if (primeraPersonaEnLaCola.getSiguienteEnLaCola() == null)
+        {
+            System.out.println("cliente: " + primeraPersonaEnLaCola.getNumeroDeCliente() + " ( " + 
+                               primeraPersonaEnLaCola.getNumeroDeBocadillos() * PRECIO_BOCADILLO + " )");
+        }
+        else
+        {
+            System.out.println("cliente: " + primeraPersonaEnLaCola.getNumeroDeCliente() + " ( " + 
+                               primeraPersonaEnLaCola.getNumeroDeBocadillos() * PRECIO_BOCADILLO + " )");
+            while(primeraPersonaEnLaCola.getSiguienteEnLaCola() != null)
+            {
+                System.out.println("cliente: " + primeraPersonaEnLaCola.getSiguienteEnLaCola().getNumeroDeCliente() + " ( " + 
+                                    primeraPersonaEnLaCola.getSiguienteEnLaCola().getNumeroDeBocadillos() * PRECIO_BOCADILLO + " )");
+            }
         }
     }
 }
