@@ -117,4 +117,33 @@ public class Bocateria
             primeraPersonaEnLaCola = primeraPersonaEnLaCola.getSiguienteEnLaCola();       
         }
     }
+    
+    /**
+     * este metodo visualiza los datos de la bocateria 
+     */
+    public void visualizaDatosBocateria()
+    {
+        System.out.println("facturacion actual: " + facturacionActual);
+        if(primeraPersonaEnLaCola == null)
+        {
+            System.out.println("la cola esta vacia");
+        }
+        else if(primeraPersonaEnLaCola.getSiguienteEnLaCola()== null)
+        {
+            System.out.println("el estado de la cola es:");
+            System.out.println("cliente: " + primeraPersonaEnLaCola.getSiguienteEnLaCola().getNumeroDeCliente() + " ( " + 
+                                primeraPersonaEnLaCola.getSiguienteEnLaCola().getNumeroDeBocadillos() * PRECIO_BOCADILLO + " )");
+        }
+        else 
+        {
+            while(primeraPersonaEnLaCola.getSiguienteEnLaCola()!= null)
+            {
+                System.out.println("el estado de la cola es:");
+                System.out.println("cliente: " + primeraPersonaEnLaCola.getSiguienteEnLaCola().getNumeroDeCliente() + " ( " + 
+                    primeraPersonaEnLaCola.getSiguienteEnLaCola().getNumeroDeBocadillos() * PRECIO_BOCADILLO + " )");
+                System.out.println("cliente: " + primeraPersonaEnLaCola.getSiguienteEnLaCola().getSiguienteEnLaCola().getNumeroDeCliente() + " ( " + 
+                    primeraPersonaEnLaCola.getSiguienteEnLaCola().getSiguienteEnLaCola().getNumeroDeBocadillos() * PRECIO_BOCADILLO + " )");
+            }
+        }
+    }
 }
