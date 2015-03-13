@@ -146,4 +146,26 @@ public class Bocateria
             }
         }
     }
+    
+    /**
+     * este meetodo simboliza que un cliente abandona la cola 
+     * @param int id la posicion del que abandona la cola
+     */
+    public void clienteAbandonaCola(int id)
+    {
+        if(id == primeraPersonaEnLaCola.getNumeroDeCliente())
+        {
+            primeraPersonaEnLaCola = primeraPersonaEnLaCola.getSiguienteEnLaCola();
+        }
+        else
+        {
+            while(primeraPersonaEnLaCola.getSiguienteEnLaCola()!= null)
+            {
+                if(primeraPersonaEnLaCola.getSiguienteEnLaCola().getNumeroDeCliente() == id)
+                {
+                    primeraPersonaEnLaCola.setSiguienteCliente(primeraPersonaEnLaCola.getSiguienteEnLaCola().getSiguienteEnLaCola());
+                }
+            }
+        }
+    }
 }
